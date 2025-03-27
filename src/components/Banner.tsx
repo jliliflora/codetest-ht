@@ -22,9 +22,17 @@ const SlideBox = styled.div`
   justify-content: center;
   align-items: center;
   font-size: 20px;
+  cursor: pointer;
 `;
 
 const slides = ["Banner 1", "Banner 2", "Banner 3", "Banner 4", "Banner 5"];
+const bannerData = [
+  { text: "Banner 1", url: "https://example.com/banner1" },
+  { text: "Banner 2", url: "https://example.com/banner2" },
+  { text: "Banner 3", url: "https://example.com/banner3" },
+  { text: "Banner 4", url: "https://example.com/banner3" },
+  { text: "Banner 5", url: "https://example.com/banner3" },
+];
 
 function Banner() {
   return (
@@ -38,11 +46,19 @@ function Banner() {
         spaceBetween={7}
         style={{ width: "100%" }}
       >
-        {slides.map((text, i) => (
+        {bannerData.map((banner, index) => (
+          <SwiperSlide
+            key={index}
+            onClick={() => window.open(banner.url, "_blank")}
+          >
+            <SlideBox>{banner.text}</SlideBox>
+          </SwiperSlide>
+        ))}
+        {/* {slides.map((text, i) => (
           <SwiperSlide key={i}>
             <SlideBox>{text}</SlideBox>
           </SwiperSlide>
-        ))}
+        ))} */}
       </Swiper>
     </BannerWrapper>
   );
