@@ -27,7 +27,7 @@ const MenuWrapper = styled.div`
 
 const MotionMenu = styled(motion.ul)`
   display: inline-flex;
-  gap: 30px;
+  gap: 12px;
   margin: 0 10px;
   padding: 10px 15px;
   background: #ffdbdb;
