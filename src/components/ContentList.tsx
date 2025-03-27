@@ -1,21 +1,68 @@
+import { useState } from "react";
 import styled from "styled-components";
+import InfiniteScroll from "react-infinite-scroll-component";
+
+interface ContentListProps {
+  title: string;
+}
 
 const ListWrapper = styled.div`
-  flex: 1;
+  height: 450px;
   overflow-y: auto;
-  padding: 16px;
-  background-color: #fff;
+  padding: 3px 16px 16px 16px;
+  /* background-color: #a38686; */
 `;
 
-function ContentList() {
+const ListTitle = styled.h1`
+  font-size: 17px;
+  /* background-color: #398098; */
+  padding: 16px 16px 10px 16px;
+`;
+
+const Item = styled.div`
+  padding: 20px;
+  margin-bottom: 8px;
+  background: #f1f1f1;
+  border-radius: 10px;
+`;
+
+function ContentList({ title }: ContentListProps) {
+  const [items, setItems] = useState(
+    Array.from({ length: 10 }, (_, i) => `Item ${i + 1}`)
+  );
+  const [hasMore, setHasMore] = useState(true);
+
+  const fetchMoreData = () => {
+    setTimeout(() => {
+      if (items.length >= 50) {
+        setHasMore(false);
+        return;
+      }
+      const moreItems = Array.from(
+        { length: 10 },
+        (_, i) => `Item ${items.length + i + 1}`
+      );
+      setItems((prev) => [...prev, ...moreItems]);
+    }, 1000);
+  };
+
   return (
-    <ListWrapper>
-      {[...Array(20)].map((_, i) => (
-        <div key={i} style={{ marginBottom: "12px" }}>
-          콘텐츠 {i + 1}
-        </div>
-      ))}
-    </ListWrapper>
+    <>
+      <ListTitle>{title}</ListTitle>
+      <ListWrapper id="scrollableDiv">
+        <InfiniteScroll
+          dataLength={items.length}
+          next={fetchMoreData}
+          hasMore={hasMore}
+          loader={<h4>Loading...</h4>}
+          scrollableTarget="scrollableDiv"
+        >
+          {items.map((item, index) => (
+            <Item key={index}>{item}</Item>
+          ))}
+        </InfiniteScroll>
+      </ListWrapper>
+    </>
   );
 }
 

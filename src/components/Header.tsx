@@ -2,6 +2,11 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import { useLayoutEffect, useRef, useState } from "react";
 
+interface HeaderProps {
+  selected: string;
+  setSelected: (value: string) => void;
+}
+
 const HeaderWrapper = styled.div`
   height: 100px;
   display: flex;
@@ -17,7 +22,6 @@ const MenuWrapper = styled.div`
   display: flex;
   align-items: center;
   position: relative;
-
   scrollbar-width: none;
   -ms-overflow-style: none;
   &::-webkit-scrollbar {
@@ -63,8 +67,7 @@ const menus = [
   "menu2",
 ];
 
-function Header() {
-  const [selected, setSelected] = useState(menus[0]);
+function Header({ selected, setSelected }: HeaderProps) {
   const [bgStyle, setBgStyle] = useState({ left: 0, width: 0 });
   const menuRefs = useRef<{ [key: string]: HTMLLIElement | null }>({});
 
@@ -73,8 +76,8 @@ function Header() {
     if (el) {
       const { offsetLeft, offsetWidth } = el;
       setBgStyle({
-        left: offsetLeft - 7, // ⬅️ 왼쪽 여백을 더 앞쪽으로!
-        width: offsetWidth + 14, // ⬅️ 전체 너비를 조금 더 넓게!
+        left: offsetLeft - 7,
+        width: offsetWidth + 14,
       });
     }
   }, [selected]);

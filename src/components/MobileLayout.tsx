@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import Header from "./Header";
 import Banner from "./Banner";
-import ContentList from "./ContentList";
 import StatusBar from "./StatusBar";
+import TabContent from "./TabContents";
+import { useState } from "react";
 
 const Layout = styled.div`
   width: 100%;
@@ -20,12 +21,14 @@ const Layout = styled.div`
 `;
 
 function MobileLayout() {
+  const [selected, setSelected] = useState("차트");
+
   return (
     <Layout>
       <StatusBar />
-      <Header />
+      <Header selected={selected} setSelected={setSelected} />
       <Banner />
-      <ContentList />
+      <TabContent selected={selected} />
     </Layout>
   );
 }

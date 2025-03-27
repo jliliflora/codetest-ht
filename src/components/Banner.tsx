@@ -6,12 +6,13 @@ import "swiper/css/autoplay";
 
 const BannerWrapper = styled.div`
   height: 250px;
-  /* background-color: #f1f1f1; */
+  /* background-color: #a3ded5; */
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
   position: relative;
+  margin-bottom: 10px;
 `;
 
 const SlideBox = styled.div`
@@ -25,13 +26,12 @@ const SlideBox = styled.div`
   cursor: pointer;
 `;
 
-const slides = ["Banner 1", "Banner 2", "Banner 3", "Banner 4", "Banner 5"];
 const bannerData = [
   { text: "Banner 1", url: "https://example.com/banner1" },
   { text: "Banner 2", url: "https://example.com/banner2" },
   { text: "Banner 3", url: "https://example.com/banner3" },
-  { text: "Banner 4", url: "https://example.com/banner3" },
-  { text: "Banner 5", url: "https://example.com/banner3" },
+  { text: "Banner 4", url: "https://example.com/banner4" },
+  { text: "Banner 5", url: "https://example.com/banner5" },
 ];
 
 function Banner() {
@@ -46,19 +46,14 @@ function Banner() {
         spaceBetween={7}
         style={{ width: "100%" }}
       >
-        {bannerData.map((banner, index) => (
+        {bannerData.map((banner, i) => (
           <SwiperSlide
-            key={index}
+            key={i}
             onClick={() => window.open(banner.url, "_blank")}
           >
             <SlideBox>{banner.text}</SlideBox>
           </SwiperSlide>
         ))}
-        {/* {slides.map((text, i) => (
-          <SwiperSlide key={i}>
-            <SlideBox>{text}</SlideBox>
-          </SwiperSlide>
-        ))} */}
       </Swiper>
     </BannerWrapper>
   );
