@@ -1,10 +1,9 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { useEffect, useRef } from "react";
 
 const HeaderWrapper = styled.div`
-  margin-top: 100px;
-  height: 100px;
+  /* margin-top: 100px; */
+  height: 80px;
   background: #f9c5c5;
   overflow-x: auto;
   white-space: nowrap;
@@ -12,17 +11,17 @@ const HeaderWrapper = styled.div`
   display: flex;
   align-items: center;
 
-  /* scrollbar-width: none;
+  scrollbar-width: none;
   -ms-overflow-style: none;
   &::-webkit-scrollbar {
     display: none;
-  } */
+  }
 `;
 
 const MotionMenu = styled(motion.ul)`
   display: inline-flex;
   gap: 35px;
-  padding: 0 16px;
+  padding: 0 30px;
   /* min-width: max-content; */
   /* border: 1px solid red; */
 `;
@@ -35,17 +34,7 @@ const MenuLi = styled.li`
 `;
 
 function Header() {
-  //페이지 진입 시 스크롤 위치 잡기
-  // const scrollRef = useRef<HTMLDivElement>(null);
-
-  // useEffect(() => {
-  //   if (scrollRef.current) {
-  //     scrollRef.current.scrollTo({ left: 0, behavior: "auto" });
-  //   }
-  // }, []);
-
   return (
-    // <HeaderWrapper ref={scrollRef}>
     <HeaderWrapper>
       <MotionMenu
         drag="x"

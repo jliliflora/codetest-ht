@@ -18,9 +18,26 @@ const Layout = styled.div`
   /* border: 1px solid red; */
 `;
 
+const StatusBar = styled.ul`
+  height: 30px; // 혹은 20~30px 등 적당히
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+const StatusBarItem = styled.li`
+  color: #fff;
+  padding: 0px 20px;
+`;
+
 function MobileLayout() {
   return (
     <Layout>
+      <StatusBar>
+        <StatusBarItem>10:00</StatusBarItem>
+        <StatusBarItem>10:00</StatusBarItem>
+      </StatusBar>
       <Header />
       <Banner />
       <ContentList />
