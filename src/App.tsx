@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import MobileLayout from "./components/MobileLayout";
+import MobileLayout from "./Components/MobileLayout";
 
 const Wrapper = styled.div`
   height: 100vh;
