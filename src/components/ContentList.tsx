@@ -8,7 +8,7 @@ interface ContentListProps {
 }
 
 const ListWrapper = styled.div`
-  height: 450px;
+  height: 300px;
   overflow-y: auto;
   padding: 3px 16px 16px 16px;
   /* background-color: #a38686; */
