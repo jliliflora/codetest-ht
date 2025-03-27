@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { useEffect, useRef } from "react";
 
 const HeaderWrapper = styled.div`
+  margin-top: 100px;
   height: 70px;
   background: #f9c5c5;
   overflow-x: auto;
