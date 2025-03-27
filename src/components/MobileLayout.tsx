@@ -3,7 +3,7 @@ import Header from "./Header";
 import Banner from "./Banner";
 import StatusBar from "./StatusBar";
 import { useState } from "react";
-import SlidingTabs from "./SlidingTabs";
+import SlideTabs from "./SlideTabs";
 
 const Layout = styled.div`
   width: 100%;
@@ -28,8 +28,7 @@ function MobileLayout() {
       <StatusBar />
       <Header selected={selected} setSelected={setSelected} />
       <Banner />
-      {/* <SlidingTabs selected={selected} /> */}
-      <SlidingTabs selected={selected} setSelected={setSelected} />
+      <SlideTabs selected={selected} setSelected={setSelected} />
     </Layout>
   );
 }
