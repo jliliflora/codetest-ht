@@ -22,6 +22,8 @@ const MenuWrapper = styled.div`
   display: flex;
   align-items: center;
   position: relative;
+
+  /* 스크롤바 숨기기 (크로스 브라우징) */
   scrollbar-width: none;
   -ms-overflow-style: none;
   &::-webkit-scrollbar {

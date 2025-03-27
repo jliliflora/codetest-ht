@@ -12,7 +12,7 @@ const ContentArea = styled.div`
 function TabContent({ selected }: Props) {
   return (
     <ContentArea>
-      <ContentList title={`${selected} 콘텐츠 리스트`} />
+      <ContentList title={`${selected} 콘텐츠 리스트`} categoryKey={selected} />
     </ContentArea>
   );
 }
