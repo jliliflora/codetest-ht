@@ -2,11 +2,11 @@ import styled from "styled-components";
 import MobileLayout from "./components/MobileLayout";
 
 const Wrapper = styled.div`
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start; // 여기 중요!
   background-color: #fde3e3;
   overflow: auto;
 `;

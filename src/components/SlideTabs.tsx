@@ -1,3 +1,4 @@
+// SlideTabs : 탭/슬라이드 관리 역할
 import styled from "styled-components";
 import TabContent from "./TabContent";
 import Slider from "react-slick";
@@ -26,12 +27,28 @@ const Container = styled.div`
   width: 100%;
 `;
 
+// ✅ 새로 추가된 스크롤 영역 (scrollableTarget)
+const ScrollArea = styled.div`
+  height: 450px;
+  overflow-y: auto;
+  padding: 3px 16px 16px 16px;
+  /* background-color: #a38686; */
+
+  /* 스크롤바 숨기기 (크로스 브라우징) */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+`;
+
 const TabContentWrapper = styled.div`
   width: 425px;
   flex-shrink: 0;
 `;
 
 function SlideTabs({ selected, setSelected }: Props) {
+  // 좌우 슬라이드 기능
   const sliderRef = useRef<any>(null);
   const currentIndex = menus.indexOf(selected);
 
@@ -48,20 +65,30 @@ function SlideTabs({ selected, setSelected }: Props) {
     slidesToScroll: 1,
     swipeToSlide: true,
     arrows: false,
-    beforeChange: (oldIndex: number, newIndex: number) => {
+    beforeChange: (_: number, newIndex: number) => {
       setSelected(menus[newIndex]);
     },
   };
 
   return (
     <Container>
-      <Slider {...settings} ref={sliderRef}>
-        {menus.map((menu) => (
-          <TabContentWrapper key={menu}>
-            <TabContent selected={menu} />
-          </TabContentWrapper>
-        ))}
-      </Slider>
+      {/* ✅ scrollableTarget을 위한 고정된 scrollBox */}
+      <ScrollArea id="scrollBox">
+        <Slider {...settings} ref={sliderRef}>
+          {/* {menus.map((menu) => (
+            <TabContentWrapper key={menu}>
+              <TabContent key={menu} selected={menu} />
+            </TabContentWrapper>
+          ))} */}
+          {menus.map((menu, index) => (
+            <TabContentWrapper key={menu}>
+              {index === currentIndex && (
+                <TabContent key={menu} selected={menu} />
+              )}
+            </TabContentWrapper>
+          ))}
+        </Slider>
+      </ScrollArea>
     </Container>
   );
 }
