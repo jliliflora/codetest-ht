@@ -12,6 +12,7 @@ const HeaderWrapper = styled.div`
   display: flex;
   align-items: flex-end;
   padding-bottom: 10px;
+  /* background-color: #111; */
 `;
 
 const MenuWrapper = styled.div`

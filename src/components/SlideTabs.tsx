@@ -1,38 +1,26 @@
 // SlideTabs : 탭/슬라이드 관리 역할
 import styled from "styled-components";
-import TabContent from "./TabContent";
 import Slider from "react-slick";
 import { useRef, useEffect } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import ContentList from "./ContentList";
 
 interface Props {
   selected: string;
   setSelected: (value: string) => void;
 }
 
-const menus = [
-  "차트",
-  "Whook",
-  "이벤트",
-  "뉴스",
-  "스토어",
-  "충전소",
-  "menu1",
-  "menu2",
-];
-
+// =============== style ===============
 const Container = styled.div`
   overflow: hidden;
   width: 100%;
 `;
 
-// ✅ 새로 추가된 스크롤 영역 (scrollableTarget)
 const ScrollArea = styled.div`
-  height: 450px;
+  height: 500px;
   overflow-y: auto;
   padding: 3px 16px 16px 16px;
-  /* background-color: #a38686; */
 
   /* 스크롤바 숨기기 (크로스 브라우징) */
   scrollbar-width: none; /* Firefox */
@@ -46,6 +34,22 @@ const TabContentWrapper = styled.div`
   width: 425px;
   flex-shrink: 0;
 `;
+
+const CntTitle = styled.div`
+  margin: 0 0 5px 3px;
+`;
+
+// =============== 메뉴 항목 리스트 ===============
+const menus = [
+  "차트",
+  "Whook",
+  "이벤트",
+  "뉴스",
+  "스토어",
+  "충전소",
+  "menu1",
+  "menu2",
+];
 
 function SlideTabs({ selected, setSelected }: Props) {
   // 좌우 슬라이드 기능
@@ -83,7 +87,10 @@ function SlideTabs({ selected, setSelected }: Props) {
           {menus.map((menu, index) => (
             <TabContentWrapper key={menu}>
               {index === currentIndex && (
-                <TabContent key={menu} selected={menu} />
+                <div>
+                  <CntTitle>{menu} 콘텐츠 리스트</CntTitle>
+                  <ContentList key={menu} selected={menu} />
+                </div>
               )}
             </TabContentWrapper>
           ))}

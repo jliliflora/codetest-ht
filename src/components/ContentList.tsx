@@ -4,17 +4,13 @@ import styled from "styled-components";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 interface ContentListProps {
-  title: string;
-  categoryKey: string;
+  selected: string;
 }
 
+// =============== style ===============
 const ListWrapper = styled.div`
-  padding: 3px 16px 16px 16px;
-`;
-
-const ListTitle = styled.h1`
-  font-size: 17px;
-  padding: 16px 16px 10px 16px;
+  padding: 3px;
+  /* background-color: #40307c; */
 `;
 
 const Item = styled.div`
@@ -34,13 +30,13 @@ const ItemCnt = styled.div`
   background-color: #c1c1c1;
 `;
 
-function ContentList({ title, categoryKey }: ContentListProps) {
+function ContentList({ selected }: ContentListProps) {
   const [items, setItems] = useState<string[]>([]);
   const [hasMore, setHasMore] = useState(true);
 
   // 탭 메뉴 바뀔 때 리스트 초기화
   useEffect(() => {
-    console.log("🚨 useEffect fired for", categoryKey);
+    console.log("🚨 useEffect fired for", selected);
     const initialItems = Array.from({ length: 10 }, (_, i) => `Item ${i + 1}`);
     setItems(initialItems);
     setHasMore(true);
@@ -49,7 +45,7 @@ function ContentList({ title, categoryKey }: ContentListProps) {
     if (scrollBox) {
       scrollBox.scrollTop = 0;
     }
-  }, [categoryKey]);
+  }, [selected]);
 
   // 스크롤 끝 도달 시 실행할 함수
   const fetchMoreData = () => {
@@ -90,7 +86,6 @@ function ContentList({ title, categoryKey }: ContentListProps) {
           </h4>
         }
       >
-        <ListTitle>{title}</ListTitle>
         {items.map((item, i) => (
           <Item key={i}>
             <ItemCnt />

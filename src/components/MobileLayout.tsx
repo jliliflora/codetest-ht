@@ -1,10 +1,11 @@
 import styled from "styled-components";
-import Header from "./Header";
 import Banner from "./Banner";
 import StatusBar from "./StatusBar";
 import { useState } from "react";
 import SlideTabs from "./SlideTabs";
+import MenuSlider from "./Menu";
 
+// =============== style ===============
 const Layout = styled.div`
   width: 100%;
   max-width: 425px;
@@ -27,7 +28,7 @@ function MobileLayout() {
   return (
     <Layout>
       <StatusBar />
-      <Header selected={selected} setSelected={setSelected} />
+      <MenuSlider selected={selected} setSelected={setSelected} />
       <Banner />
       <SlideTabs selected={selected} setSelected={setSelected} />
     </Layout>

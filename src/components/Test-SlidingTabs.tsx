@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import TabContent from "./TabContent";
 
 interface Props {
   selected: string;
@@ -43,7 +42,7 @@ function SlidingTabs({ selected }: Props) {
       <SliderWrapper index={currentIndex}>
         {menus.map((menu) => (
           <TabContentWrapper key={menu}>
-            <TabContent selected={menu} />
+            {/* <TabContent selected={menu} /> */}
           </TabContentWrapper>
         ))}
       </SliderWrapper>

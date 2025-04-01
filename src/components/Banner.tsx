@@ -4,6 +4,7 @@ import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/autoplay";
 
+// =============== style ===============
 const BannerWrapper = styled.div`
   height: 250px;
   /* background-color: #a3ded5; */
@@ -26,6 +27,7 @@ const SlideBox = styled.div`
   cursor: pointer;
 `;
 
+// =============== 배너 리스트 ===============
 const bannerData = [
   { text: "Banner 1", url: "https://example.com/banner1" },
   { text: "Banner 2", url: "https://example.com/banner2" },
