@@ -36,7 +36,7 @@ function ContentList({ selected }: ContentListProps) {
 
   // 탭 메뉴 바뀔 때 리스트 초기화
   useEffect(() => {
-    console.log("🚨 useEffect fired for", selected);
+    // console.log("선택된 메뉴 :", selected);
     const initialItems = Array.from({ length: 10 }, (_, i) => `Item ${i + 1}`);
     setItems(initialItems);
     setHasMore(true);
@@ -49,11 +49,10 @@ function ContentList({ selected }: ContentListProps) {
 
   // 스크롤 끝 도달 시 실행할 함수
   const fetchMoreData = () => {
-    console.log("🔥 fetchMoreData called");
     setTimeout(() => {
       setItems((prev) => {
         if (prev.length >= 50) {
-          console.log("❌ Stop loading, reached max");
+          // console.log("50개 도달");
           setHasMore(false);
           return prev;
         }

@@ -16,15 +16,12 @@ const HeaderWrapper = styled.div`
 const MenuContainer = styled.div`
   position: relative;
   overflow: visible;
-  /* padding: 10px; */
-  /* background-color: #bb8b1c; */
 `;
 
 const StyledSlider = styled(Slider)`
   .slick-list {
     padding: 15px 0px 5px 10px;
     /* background-color: #c913a8; */
-    /* box-sizing: content-box; */
     overflow: visible;
   }
   .slick-track {
@@ -43,18 +40,6 @@ const StyledSlider = styled(Slider)`
     margin-right: 0px;
   }
 `;
-
-// =============== 메뉴 리스트 ===============
-const menuItems = [
-  "차트",
-  "Whook",
-  "이벤트",
-  "뉴스",
-  "스토어",
-  "충전소",
-  "menu1",
-  "menu2",
-];
 
 const MenuBtn = styled.button.withConfig({
   shouldForwardProp: (prop) => prop !== "active", // active는 DOM에 전달하지 않음
@@ -79,6 +64,18 @@ const MenuBtn = styled.button.withConfig({
     color: #d84c7e;
   }
 `;
+
+// =============== 메뉴 리스트 ===============
+const menuItems = [
+  "차트",
+  "Whook",
+  "이벤트",
+  "뉴스",
+  "스토어",
+  "충전소",
+  "menu1",
+  "menu2",
+];
 
 function MenuSlider({ selected, setSelected }: HeaderProps) {
   const settings = {

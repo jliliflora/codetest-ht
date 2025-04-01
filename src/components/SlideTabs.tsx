@@ -76,14 +76,8 @@ function SlideTabs({ selected, setSelected }: Props) {
 
   return (
     <Container>
-      {/* ✅ scrollableTarget을 위한 고정된 scrollBox */}
       <ScrollArea id="scrollBox">
         <Slider {...settings} ref={sliderRef}>
-          {/* {menus.map((menu) => (
-            <TabContentWrapper key={menu}>
-              <TabContent key={menu} selected={menu} />
-            </TabContentWrapper>
-          ))} */}
           {menus.map((menu, index) => (
             <TabContentWrapper key={menu}>
               {index === currentIndex && (
